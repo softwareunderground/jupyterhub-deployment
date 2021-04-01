@@ -20,5 +20,7 @@ src='https://raw.githubusercontent.com/softwareunderground/jupyterhub-deployment
 {% block stylesheet %}
 {{ super() }}
 <!-- <link rel="stylesheet" ref="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/> -->
-<link rel="stylesheet" href="/etc/jupyterhub/custom/custom-theme/assets/css/style.css" type="text/css"/>
+<!-- <link rel="stylesheet" href="{{ static_url("assets/css/style.css") }}" type="text/css"/> -->
+<link rel="stylesheet" href="/hub/assets/css/style.css" type="text/css"/>
+
 {% endblock %}
