@@ -5,7 +5,7 @@
 
 .branding img {
     /* display: block; */
-    width: 400px;
+    width: 500px;
     /* top right bottom left */
     /* margin: 0 auto 0 auto; */
 }
@@ -18,7 +18,7 @@
 }
 
 .main h2 {
-    /* font-family: "Panton Light Caps"; */
+    font-family: "Coolvetica";
     font-size: 2rem;
     color: {{ h2_color | default("#3861DE") }};
     margin-bottom: 20px;
@@ -26,7 +26,7 @@
 
 .main p {
     font-size: 1.7rem;
-    /* font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
+    font-family: "Coolvetica";
     color: {{ text_color | default("#3861DE") }}
 }
 
@@ -81,6 +81,7 @@ footer p{
 
 .btn-jupyter.active, .btn-jupyter:active, .open>.dropdown-toggle.btn-jupyter {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #a88400;
+    background-color: rgb(65,	95,	213);
     border-color: rgb(65,	95,	213);
     outline-color: rgb(65, 95, 213);
 }
