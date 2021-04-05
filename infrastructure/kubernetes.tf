@@ -36,8 +36,8 @@ module "kubernetes-conda-store-server" {
   nfs_capacity = "20Gi"
   environments = {
 
-    "environment-default.yaml" = file("../environments/environment-default.yaml")
-    "environment-test.yaml" = file("../environments/environment-test.yaml")
+    "environment-default.yaml" = file("../conda-environments/environment-default.yaml")
+    "environment-test-v1.yaml" = file("../conda-environments/environment-test-v1.yaml")
 
   }
   dependencies = [
