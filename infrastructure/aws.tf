@@ -2,7 +2,6 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-
 # ==================== ACCOUNTING ======================
 module "accounting" {
   source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/accounting"
@@ -10,7 +9,6 @@ module "accounting" {
   project     = var.name
   environment = var.environment
 }
-
 
 # ======================= NETWORK ======================
 module "network" {
@@ -36,7 +34,6 @@ module "network" {
   aws_availability_zones = var.availability_zones
 }
 
-
 # ==================== REGISTRIES =====================
 module "registry-jupyterlab" {
   source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/registry"
@@ -44,7 +41,6 @@ module "registry-jupyterlab" {
   name = "${local.cluster_name}-jupyterlab"
   tags = local.additional_tags
 }
-
 
 # ====================== EFS =========================
 module "efs" {
@@ -56,7 +52,6 @@ module "efs" {
   efs_subnets         = module.network.subnet_ids
   efs_security_groups = [module.network.security_group_id]
 }
-
 
 # ==================== KUBERNETES =====================
 module "kubernetes" {
