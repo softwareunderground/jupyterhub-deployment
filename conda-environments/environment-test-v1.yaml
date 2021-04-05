@@ -1,0 +1,16 @@
+channels:
+- conda-forge
+- defaults
+dependencies:
+- python=3.8
+- ipykernel
+- ipywidgets
+- dask==2.14.0
+- distributed==2.14
+- dask-gateway=0.6.1
+- numpy
+- numba
+- pandas
+- matplotlib
+- bokeh==2.2.3
+name: test-v1
