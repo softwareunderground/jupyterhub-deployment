@@ -19,6 +19,17 @@ TBD
 
 * [Amazon EC2 Instance Selector](https://github.com/aws/amazon-ec2-instance-selector)
 
+## How it works
+
+* Infrastructure (IaaC)
+* JupyterHub
+
+## Deployment process
+
+1. Deploy the Kubernetes cluster: execute `terraform apply` inside the `infrastructure` directory.
+2. Update the `CNAME` of the JupyterHub endpoint with the new value shown after completion of the Terraform deployment.
+3. Deploy the JupyterHub: execute `terraform apply` inside the `jupyterhub` directory.
+
 ## Questions
 
 * [Discussion](https://github.com/softwareunderground/jupyterhub-deployment/discussions)
