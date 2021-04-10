@@ -6,7 +6,7 @@ a JupyterHub on Kubernetes using the official JupyterHub
 
 This JupyterHub uses the Helm chart version `0.11.1`.
 
-We are standing on the should of giants such as:
+We are standing on the shoulders of giants such as:
 
 * Quansight's [Qhub](https://github.com/Quansight/qhub-cloud) Terraform-based deployment
 * [Zero to JupyterHub with Kubernetes](https://zero-to-jupyterhub.readthedocs.io)
