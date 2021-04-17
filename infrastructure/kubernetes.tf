@@ -38,6 +38,7 @@ module "kubernetes-conda-store-server" {
 
     "environment-default.yaml" = file("../conda-environments/environment-default.yaml")
     "environment-test-v1.yaml" = file("../conda-environments/environment-test-v1.yaml")
+    "environment-t21-thurs-harmonica.yaml" = file("../conda-environments/environment-t21-thurs-harmonica.yaml")
 
   }
   dependencies = [
