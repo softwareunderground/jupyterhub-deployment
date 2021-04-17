@@ -25,7 +25,7 @@ provider "helm" {
 }
 
 module "jupyterhub" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/jupyterhub-swung"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/jupyterhub-swung"
 
   jupyterhub_helm_chart_version = var.jupyterhub_helm_chart_version
 
