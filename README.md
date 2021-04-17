@@ -11,6 +11,23 @@ We are standing on the shoulders of giants such as:
 * Quansight's [Qhub](https://github.com/Quansight/qhub-cloud) Terraform-based deployment
 * [Zero to JupyterHub with Kubernetes](https://zero-to-jupyterhub.readthedocs.io)
 
+## Login process
+
+* Go to [https://jupyter-dev.softwareunderground.org/](https://jupyter-dev.softwareunderground.org/)
+and click on `Sign in with Slack`:
+![Step1](docs/images/step1.png)
+
+* Fill out the Workspace's URL: `swung.slack.com`:
+![Step2](docs/images/step2.png)
+
+* Sign in into Slack:
+![Step3](docs/images/step3.png)
+
+* Allow the SwungHub Slack app to access your credentials:
+![Step4](docs/images/step4.png)
+
+* Enjoy!
+
 ## Roadmap
 
 TBD
