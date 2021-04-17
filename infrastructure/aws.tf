@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = var.region
 }
 
 # ==================== ACCOUNTING ======================
 module "accounting" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/accounting"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/accounting"
 
   project     = var.name
   environment = var.environment
@@ -12,7 +12,7 @@ module "accounting" {
 
 # ======================= NETWORK ======================
 module "network" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/network"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/network"
 
   name = local.cluster_name
 
@@ -36,7 +36,7 @@ module "network" {
 
 # ==================== REGISTRIES =====================
 module "registry-jupyterlab" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/registry"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/registry"
 
   name = "${local.cluster_name}-jupyterlab"
   tags = local.additional_tags
@@ -44,7 +44,7 @@ module "registry-jupyterlab" {
 
 # ====================== EFS =========================
 module "efs" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/efs"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/efs"
 
   name = "${local.cluster_name}-jupyterhub-shared"
   tags = local.additional_tags
@@ -55,7 +55,7 @@ module "efs" {
 
 # ==================== KUBERNETES =====================
 module "kubernetes" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/kubernetes"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/kubernetes"
 
   name = local.cluster_name
   tags = local.additional_tags

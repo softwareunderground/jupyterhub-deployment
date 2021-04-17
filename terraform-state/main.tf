@@ -1,15 +1,15 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = var.region
 }
 
 module "terraform-state" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/aws/terraform-state"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/terraform-state"
 
-  name = "swunghub-v1"
+  name = var.name
 
   tags = {
-    Organization = "swunghub-v1"
+    Organization = var.name
     Project      = "terraform-state"
-    Environment  = "dev"
+    Environment  = var.environment
   }
 }

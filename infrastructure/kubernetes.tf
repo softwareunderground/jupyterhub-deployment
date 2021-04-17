@@ -5,7 +5,7 @@ provider "kubernetes" {
 }
 
 module "kubernetes-initialization" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/kubernetes/initialization"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/initialization"
 
   namespace = var.environment
   secrets   = []
@@ -17,7 +17,7 @@ module "kubernetes-initialization" {
 }
 
 module "kubernetes-nfs-mount" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/kubernetes/nfs-mount"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/nfs-mount"
 
   name         = "nfs-mount"
   namespace    = var.environment
@@ -29,25 +29,19 @@ module "kubernetes-nfs-mount" {
 }
 
 module "kubernetes-conda-store-server" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/kubernetes/services/conda-store"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/services/conda-store"
 
   name         = "conda-store"
   namespace    = var.environment
   nfs_capacity = "20Gi"
-  environments = {
-
-    "environment-default.yaml" = file("../conda-environments/environment-default.yaml")
-    "environment-test-v1.yaml" = file("../conda-environments/environment-test-v1.yaml")
-    "environment-t21-thurs-harmonica.yaml" = file("../conda-environments/environment-t21-thurs-harmonica.yaml")
-
-  }
+  environments = {for env in var.conda_environments : env => file("../conda-environments/${env}")}
   dependencies = [
     module.kubernetes-initialization.depended_on
   ]
 }
 
 module "kubernetes-conda-store-mount" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/kubernetes/nfs-mount"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/nfs-mount"
 
   name         = "conda-store"
   namespace    = var.environment
@@ -69,7 +63,7 @@ provider "helm" {
 }
 
 module "kubernetes-autoscaling" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/kubernetes/services/cluster-autoscaler"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/services/cluster-autoscaler"
 
   namespace = var.environment
 
@@ -82,7 +76,7 @@ module "kubernetes-autoscaling" {
 }
 
 module "kubernetes-ingress" {
-  source = "/Users/filippo/Work/jupyterhub-terraform-modules/modules/kubernetes/ingress"
+  source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/ingress"
 
   namespace = var.environment
 

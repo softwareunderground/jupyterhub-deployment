@@ -1,11 +1,9 @@
 variable "name" {
   type    = string
-  default = "swunghub-v1"
 }
 
 variable "environment" {
   type    = string
-  default = "dev"
 }
 
 variable "region" {
@@ -23,4 +21,10 @@ variable "vpc_cidr_block" {
   description = "VPC cidr block for infastructure"
   type        = string
   default     = "10.10.0.0/16"
+}
+
+variable "conda_environments" {
+  description = "Conda environments available to the users"
+  type        = list(string)
+  default     = ["environment-default.yaml"]
 }
