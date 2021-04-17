@@ -1,0 +1,19 @@
+name: t21-thurs-harmonica
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.8.*
+  - numpy
+  - pandas
+  - xarray
+  - matplotlib
+  - jupyterlab
+  - proj
+  - pyproj
+  - netcdf4
+  # Fatiando a Terra libraries
+  - pooch
+  - verde
+  - boule==0.2.0
+  - harmonica==0.2.1
