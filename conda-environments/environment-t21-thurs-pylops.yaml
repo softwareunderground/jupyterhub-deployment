@@ -1,0 +1,17 @@
+name: t21-thurs-pylops
+channels:
+  - defaults
+  - conda-forge
+  - numba
+dependencies:
+  - python>=3.6.4
+  - numpy>=1.15.0
+  - scipy>=1.4.0
+  - matplotlib
+  - pyfftw
+  - pywavelets
+  - pip:
+    - pympler
+    - pyproximal
+    - scooby
+    - segyio
