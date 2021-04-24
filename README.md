@@ -15,6 +15,10 @@ We are standing on the shoulders of giants such as:
 
 TBD
 
+## Tools
+
+* [Amazon EC2 Instance Selector](https://github.com/aws/amazon-ec2-instance-selector)
+
 ## Questions
 
 * [Discussion](https://github.com/softwareunderground/jupyterhub-deployment/discussions)
