@@ -79,7 +79,7 @@ module "kubernetes" {
 
     {
       name          = "user"
-      instance_type = "m5.large"
+      instance_type = "c5.xlarge"
       min_size      = 1
       desired_size  = 1
       max_size      = 2
