@@ -8,8 +8,10 @@ module "terraform-state" {
   name = var.name
 
   tags = {
-    Organization = var.name
-    Project      = "terraform-state"
+    Organization = var.organization
+    Project      = var.name
+    Owner        = "terraform"
     Environment  = var.environment
   }
 }
+

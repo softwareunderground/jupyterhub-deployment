@@ -21,7 +21,7 @@ module "kubernetes-nfs-mount" {
 
   name         = "nfs-mount"
   namespace    = var.environment
-  nfs_capacity = "10Gi"
+  nfs_capacity = "100Gi"
   nfs_endpoint = module.efs.credentials.dns_name
   dependencies = [
     module.kubernetes-initialization.depended_on
@@ -31,10 +31,12 @@ module "kubernetes-nfs-mount" {
 module "kubernetes-conda-store-server" {
   source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/kubernetes/services/conda-store"
 
-  name         = "conda-store"
-  namespace    = var.environment
-  nfs_capacity = "20Gi"
-  environments = {for env in var.conda_environments : env => file("../conda-environments/${env}")}
+  name              = "conda-store"
+  namespace         = var.environment
+  nfs_capacity      = "20Gi"
+  node-group        = local.node_groups.general
+  conda-store-image = var.conda-store-image
+  environments      = {for env in var.conda_environments : env => file("../conda-environments/${env}")}
   dependencies = [
     module.kubernetes-initialization.depended_on
   ]
@@ -54,12 +56,10 @@ module "kubernetes-conda-store-mount" {
 
 provider "helm" {
   kubernetes {
-    load_config_file       = false
     host                   = module.kubernetes.credentials.endpoint
     token                  = module.kubernetes.credentials.token
     cluster_ca_certificate = module.kubernetes.credentials.cluster_ca_certificate
   }
-  version = "1.0.0"
 }
 
 module "kubernetes-autoscaling" {

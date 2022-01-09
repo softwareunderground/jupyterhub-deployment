@@ -5,6 +5,8 @@ provider "aws" {
 # ==================== ACCOUNTING ======================
 module "accounting" {
   source = "github.com/softwareunderground/jupyterhub-terraform-modules//modules/aws/accounting"
+  
+  tags = local.additional_tags
 
   project     = var.name
   environment = var.environment
@@ -71,18 +73,20 @@ module "kubernetes" {
 
     {
       name          = "general"
-      instance_type = "m5.large"
+      instance_type = "m5.xlarge"
       min_size      = 1
       desired_size  = 1
       max_size      = 1
+      gpu           = false
     },
 
     {
       name          = "user"
-      instance_type = "c5.xlarge"
+      instance_type = "m5.large"
       min_size      = 1
       desired_size  = 1
       max_size      = 2
+      gpu           = false
     },
 
     {
@@ -91,6 +95,7 @@ module "kubernetes" {
       min_size      = 1
       desired_size  = 1
       max_size      = 2
+      gpu           = false
     },
 
   ]
