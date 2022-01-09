@@ -1,3 +1,7 @@
+variable "organization" {
+  type    = string
+}
+
 variable "name" {
   type    = string
 }
@@ -8,5 +12,5 @@ variable "environment" {
 
 variable "region" {
   type    = string
-  default = "eu-central-1"
 }
+

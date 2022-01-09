@@ -1,3 +1,7 @@
+variable "organization" {
+  type    = string
+}
+
 variable "name" {
   type    = string
 }
@@ -8,13 +12,11 @@ variable "environment" {
 
 variable "region" {
   type    = string
-  default = "eu-central-1"
 }
 
 variable "availability_zones" {
   description = "AWS availability zones within AWS region"
   type        = list(string)
-  default     = ["eu-central-1a", "eu-central-1b"]
 }
 
 variable "vpc_cidr_block" {
@@ -28,3 +30,16 @@ variable "conda_environments" {
   type        = list(string)
   default     = ["environment-default.yaml"]
 }
+
+variable "conda-store-image" {
+  description = "Conda-store image"
+  type = object({
+    name = string
+    tag  = string
+  })
+  default = {
+    name = "quansight/qhub-conda-store"
+    tag  = "v0.3.14"
+  }
+}
+
