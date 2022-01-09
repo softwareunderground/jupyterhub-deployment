@@ -1,0 +1,38 @@
+gateway:
+  extraConfig:
+    profiles: |
+      from dask_gateway_server.options import Options, Select
+
+      # A mapping from profile name to configuration overrides
+      profiles = {'Small Worker': {'worker_cores_limit': 1, 'worker_cores': 1, 'worker_memory_limit': '1G', 'worker_memory': '1G', 'image': 'quansight/qhub-dask-worker:1abd4efb8428a9d851b18e89b6f6e5ef94854334'}, 'Medium Worker': {'worker_cores_limit': 1.5, 'worker_cores': 1.25, 'worker_memory_limit': '2G', 'worker_memory': '2G', 'image': 'quansight/qhub-dask-worker:1abd4efb8428a9d851b18e89b6f6e5ef94854334'}}
+      environments = [
+      
+          "default",
+      
+      ]
+
+      def worker_profile(options):
+           config = profiles[options.profile]
+           config['worker_cmd'] = '/opt/conda-run-worker'
+           config['scheduler_cmd'] = '/opt/conda-run-scheduler'
+           config['environment'] = {
+               'CONDA_ENVIRONMENT': options.environment
+           }
+           return config
+
+      # Expose a list of profiles for workers
+      c.DaskGateway.cluster_manager_options = Options(
+          Select(
+              "environment",
+              environments,
+              default=environments[0],
+              label='Environment',
+          ),
+          Select(
+              "profile",
+              ['Small Worker', 'Medium Worker'],
+              default='Small Worker',
+              label="Cluster Profile",
+          ),
+          handler=worker_profile,
+      )
